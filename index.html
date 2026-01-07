@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наебанк - Мы заберём всё!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Arial Black', sans-serif;
+        }
+        
+        body {
+            background: #000;
+            color: #ff0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 0, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 0, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(0, 0, 255, 0.3) 0%, transparent 30%);
+            animation: backgroundMove 20s infinite linear;
+        }
+        
+        @keyframes backgroundMove {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 100px 100px, -100px -100px, 50px -50px; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #f00, #ff0, #0f0, #00f, #f0f);
+            background-size: 500% 100%;
+            animation: headerGradient 5s infinite linear;
+            padding: 15px 0;
+            position: relative;
+            border-bottom: 10px dotted #fff;
+        }
+        
+        @keyframes headerGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-shadow: 3px 3px 0 #f00, -3px -3px 0 #00f;
+        }
+        
+        .logo i {
+            font-size: 40px;
+            animation: spin 5s infinite linear;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.5); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 0;
+            background: #ff0;
+            border: 3px solid #000;
+            transition: all 0.2s;
+            display: block;
+            animation: navPulse 2s infinite;
+        }
+        
+        @keyframes navPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        nav a:hover {
+            background: #f00;
+            color: #ff0;
+            transform: rotate(5deg) scale(1.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 20px 0;
+            border: 5px dashed #f00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "⚠️ ВНИМАНИЕ! ⚠️";
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            background: #f00;
+            color: #ff0;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px 0 #f00, -5px -5px 0 #00f;
+            animation: textShake 0.5s infinite;
+            margin-top: 40px;
+        }
+        
+        @keyframes textShake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+            100% { transform: translateX(0); }
+        }
+        
+        .hero p {
+            font-size: 24px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            background: #000;
+            padding: 15px;
+            border: 3px solid #ff0;
+            transform: rotate(-1deg);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            font-weight: 900;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #f00, #ff0);
+            color: #000;
+            border: 3px solid #000;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(45deg, #00f, #0f0);
+            color: #000;
+            border: 3px solid #000;
+        }
+        
+        .btn:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 0 20px #fff;
+        }
+        
+        /* Продукты */
+        .products {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #ff0;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0 #f00;
+            background: #000;
+            padding: 10px;
+            display: inline-block;
+            border: 5px double #ff0;
+            transform: rotate(-2deg);
+        }
+        
+        .product-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .product-card {
+            background: #000;
+            border: 5px solid #f00;
+            padding: 25px;
+            width: 300px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: "ХИТ!";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: #ff0;
+            color: #f00;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: bold;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.1) rotate(3deg);
+            border-color: #0f0;
+            box-shadow: 0 0 30px #0f0;
+        }
+        
+        .product-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #ff0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .product-name {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ff0;
+            text-shadow: 2px 2px 0 #f00;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        /* Оплата телефона */
+        .phone-payment {
+            padding: 60px 0;
+            background: rgba(255, 0, 0, 0.1);
+            border-top: 5px dotted #ff0;
+            border-bottom: 5px dotted #ff0;
+        }
+        
+        .payment-form {
+            background: #000;
+            padding: 30px;
+            border: 5px solid #ff0;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .payment-form::before {
+            content: "⚠️ ДЕНЬГИ НЕ ВЕРНЁМ! ⚠️";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f00;
+            color: #ff0;
+            padding: 5px 15px;
+            font-weight: bold;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ff0;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background: #000;
+            border: 3px solid #f00;
+            color: #ff0;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #0f0;
+            box-shadow: 0 0 10px #0f0;
+        }
+        
+        /* Отделения */
+        .branches {
+            padding: 60px 0;
+        }
+        
+        .branch-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .branch-item {
+            background: #000;
+            padding: 20px;
+            border: 3px solid #ff0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .branch-item:hover {
+            background: #222;
+            transform: translateX(10px);
+        }
+        
+        /* Акции */
+        .promotions {
+            padding: 60px 0;
+        }
+        
+        .promo-banner {
+            background: linear-gradient(90deg, #f00, #ff0, #0f0, #00f, #f0f);
+            background-size: 500% 100%;
+            animation: headerGradient 3s infinite linear;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 5px solid #000;
+            position: relative;
+        }
+        
+        .promo-banner h3 {
+            font-size: 32px;
+            color: #000;
+            text-shadow: 2px 2px 0 #fff;
+            margin-bottom: 15px;
+        }
+        
+        .promo-banner p {
+            font-size: 20px;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            color: #ff0;
+            padding: 40px 0 20px;
+            border-top: 10px solid #f00;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f00;
+            text-decoration: underline;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ff0;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #f00;
+            text-decoration: line-through;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #ff0;
+            color: #000;
+            border-radius: 50%;
+            transition: all 0.3s;
+            font-size: 20px;
+        }
+        
+        .social-links a:hover {
+            background: #f00;
+            color: #ff0;
+            transform: rotate(360deg) scale(1.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #f00;
+            color: #ff0;
+            font-size: 14px;
+        }
+        
+        .marquee {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f00;
+            color: #ff0;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+            z-index: 1000;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            border: 5px solid #f00;
+            padding: 30px;
+            z-index: 1001;
+            text-align: center;
+            box-shadow: 0 0 50px #ff0;
+            animation: popupShake 0.5s infinite;
+        }
+        
+        @keyframes popupShake {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-50%, -50%) rotate(1deg); }
+            75% { transform: translate(-50%, -50%) rotate(-1deg); }
+            100% { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+        
+        .popup h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff0;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h1>Наебанк</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#products">Продукты</a></li>
+                        <li><a href="#payment">Оплата телефона</a></li>
+                        <li><a href="#branches">Отделения</a></li>
+                        <li><a href="#promotions">Акции</a></li>
+                        <li><a href="#" onclick="redirectToSupport()">Поддержка</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>НАЕБАНК - МЫ ЗАБЕРЁМ ВСЁ!</h2>
+            <p>Самые невыгодные условия, скрытые комиссии и процентные ставки, от которых плачут даже Сбербанк!</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Оформить кредит под 999%</button>
+                <button class="btn btn-secondary">Открыть вклад с -290% годовых</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Оплата телефона -->
+    <section class="phone-payment" id="payment">
+        <div class="container">
+            <div class="section-title">
+                <h2>ОПЛАТА ТЕЛЕФОНА (ГНИЛЬMOBILE)</h2>
+                <p>Заплатите сейчас, а связь исчезнет через миллисекунду!</p>
+            </div>
+            <div class="payment-form">
+                <form id="phonePaymentForm">
+                    <div class="form-group">
+                        <label for="phone">Номер телефона:</label>
+                        <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Сумма (руб):</label>
+                        <input type="number" id="amount" min="1" max="10000" value="500" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card">Номер карты:</label>
+                        <input type="text" id="card" placeholder="XXXX XXXX XXXX XXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV код:</label>
+                        <input type="text" id="cvv" placeholder="XXX" required>
+                    </div>
+					                    <div class="form-group">
+                        <label for="cvv">Ваш тариф</label>
+                        <input type="text" id="cvv" placeholder="Тариф" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">ОПЛАТА</button>
+                </form>
+            </div>
+        </div>
+    </section>
+   <section class="phone-payment" id="payment">
+        <div class="container">
+            <div class="section-title">
+                <h2>ОПЛАТА ИНТЕРНЕТА  И ТВ (SiskiTELECOM)</h2>
+                <p>Да</p>
+            </div>
+            <div class="payment-form">
+                <form id="phonePaymentForm">
+                    <div class="form-group">
+                        <label for="phone">ID</label>
+                        <input type="tel" id="phone" placeholder="89XXXXXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Сумма (руб):</label>
+                        <input type="number" id="amount" min="1" max="10000" value="500" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card">Номер карты:</label>
+                        <input type="text" id="card" placeholder="XXXX XXXX XXXX XXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV код:</label>
+                        <input type="text" id="cvv" placeholder="XXX" required>
+                    </div>
+					                    <div class="form-group">
+                        <label for="cvv">Ваш тариф</label>
+                        <input type="text" id="cvv" placeholder="Тариф" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">ОПЛАТА</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Продукты -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>НАШИ "ВЫГОДНЫЕ" ПРЕДЛОЖЕНИЯ</h2>
+            </div>
+            <div class="product-cards">
+                <!-- Продукт 1 -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="product-name">Кредитная карта "Долговая яма"</h3>
+                    <div class="product-description">
+                        <p>Кредитный лимит до 50 000 руб. Меньше нельзя, карта аннулируется и вы обязаны выплатить 90к штраф</p>
+                        <p>Ставка: от 99.9% годовых</p>
+                        <p>Ежедневная комиссия за пользование: 50000 руб.</p>
+                        <p>Штраф за просрочку: 1000% от суммы</p>
+                    </div>
+                    <button class="btn btn-primary">Оформить</button>
+                </div>
+                
+                <!-- Продукт 2 -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="product-name">Ипотека "Пожизненная кабала"</h3>
+                    <div class="product-description">
+                        <p>Ставка: 50% годовых</p>
+                        <p>Первоначальный взнос: 90%</p>
+                        <p>Срок: до 5 лет</p>
+                        <p>Дополнительно: Самая худшая хата</p>
+                    </div>
+                    <button class="btn btn-primary">Оформить</button>
+                </div>
+                
+                <!-- Продукт 3 -->
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3 class="product-name">Вклад "Обесценивание"</h3>
+                    <div class="product-description">
+                        <p>Ставка: -5% годовых</p>
+                        <p>Минимальная сумма: 1 000 000 руб.</p>
+                        <p>Комиссия за снятие: 50% от суммы</p>
+                        <p>Ежемесячная плата за обслуживание: 100000 руб.</p>
+                    </div>
+                    <button class="btn btn-primary">Открыть</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отделения -->
+    <section class="branches" id="branches">
+        <div class="container">
+            <div class="section-title">
+                <h2>НАШИ "УДОБНЫЕ" ОТДЕЛЕНИЯ</h2>
+            </div>
+            <div class="branch-list">
+                <div class="branch-item">
+                    <div>
+                        <h3>Центральное отделение</h3>
+                        <p>ул. Хахашечная, д. 13</p>
+                        <p>Режим работы: когда захотим</p>
+                    </div>
+                    <div>
+                        <p>Очередь: от 9 часов</p>
+                    </div>
+                </div>
+                
+                <div class="branch-item">
+                    <div>
+                        <h3>Филиал "Под мостом"</h3>
+                        <p>НАбережная СВАЙ, д. 6</p>
+                        <p>Режим работы: только тогда, когда в африке польет дождь летом</p>
+                    </div>
+                    <div>
+                        <p>Очередь: от 10 часов</p>
+                    </div>
+                </div>
+                
+                <div class="branch-item">
+                    <div>
+                        <h3>Филиал "В трущобах"</h3>
+                        <p>пер. Кривой, д. 66</p>
+                        <p>Режим работы: по настроению</p>
+                    </div>
+                    <div>
+                        <p>Очередь: от 30 часов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Акции -->
+    <section class="promotions" id="promotions">
+        <div class="container">
+            <div class="section-title">
+                <h2>АКЦИИ И "СКИДКИ"</h2>
+            </div>
+            
+            <div class="promo-banner">
+                <h3>СУПЕРПРЕДЛОЖЕНИЕ!</h3>
+                <p>Оформите 3 кредита одновременно и получите 4-й в ПОДАРОК!</p>
+            </div>
+            
+            <div class="promo-banner">
+                <h3>НОВОГОДНЯЯ АКЦИЯ! (еще с 90-ых)</h3>
+                <p>В январе процентная ставка по кредитам ВСЕГО 888%!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Наебанк</h3>
+                    <p>Мы работаем, чтобы вы оставались без денег!</p>
+                    <div class="social-links">
+                        <a href="https://github.com/PEE3PLEER/bestsites/invitations">Сиска тилиом</a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="https://github.com/PEE3PLEER/super-duper-couscous/invitations">ГнильMOBILE</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>Телефон: 8-800-555-00-00 (платный)</li>
+                        <li>Email: tapauhomi44ka@gmail.com</li>
+                        <li>Адрес: г. Вокрута, ул. Мисиссипи, д. 1</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Документы</h3>
+                    <ul>
+                        <li><a href="#" onclick="redirectToLicense()">Лицензия на отъем денег</a></li>
+                        <li><a href="#" onclick="redirectToCommissionRules()">Правила начисления комиссий</a></li>
+                        <li><a href="#" onclick="redirectToPrivacyPolicy()">Соглашение о конфиденциальности</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 1930 Наебанк. Все права защищены. Ваши деньги - наши деньги!</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Бегущая строка -->
+    <div class="marquee">
+        ⚠️ ВЫ В НАШЕМ РАБСТВЕ ⚠️ СКРЫТЫЕ КОМИССИИ ДО 500%! ⚠️ КРЕДИТЫ ПОД 999% ГОДОВЫХ! ⚠️
+    </div>
+
+    <!-- Попап -->
+    <div class="popup" id="popup">
+        <h3>СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ!</h3>
+        <p>Только сегодня! Кредит под 1500% годовых!</p>
+        <p>Успейте взять, пока не передумали!</p>
+        <div class="popup-buttons">
+            <button class="btn btn-primary" onclick="closePopup()">ВЗЯТЬ КРЕДИТ!</button>
+            <button class="btn btn-secondary" onclick="showMorePopup()">ВЗЯТЬ КРЕДИТ!</button>
+        </div>
+    </div>
+
+    <script>
+        // Показ попапа при загрузке
+        window.addEventListener('load', function() {
+            document.getElementById('popup').style.display = 'block';
+        });
+        
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            // Показываем новый попап через 10 секунд
+            setTimeout(function() {
+                document.getElementById('popup').innerHTML = `
+                    <h3>НЕ УПУСТИТЕ ШАНС!</h3>
+                    <p>Суперпредложение: вклад с -10% годовых!</p>
+                    <p>Ваши деньги будут таять на глазах!</p>
+                    <div class="popup-buttons">
+                        <button class="btn btn-primary" onclick="closePopup()">ОТКРЫТЬ ВКЛАД!</button>
+                        <button class="btn btn-secondary" onclick="showMorePopup()">НЕТ, Я ХОЧУ КРЕДИТ!</button>
+                    </div>
+                `;
+                document.getElementById('popup').style.display = 'block';
+            }, 10000);
+        }
+        
+        function showMorePopup() {
+            document.getElementById('popup').innerHTML = `
+                <h3>ВЫБЕРИТЕ СВОЮ КАБАЛУ!</h3>
+                <p>1. Кредит под 999%</p>
+                <p>2. Ипотека на 100 лет</p>
+                <p>3. Вклад с отрицательными процентами</p>
+                <div class="popup-buttons">
+                    <button class="btn btn-primary" onclick="closePopup()">ВСЁ СРАЗУ!</button>
+                    <button class="btn btn-secondary" onclick="closePopup()">ТОЛЬКО САМОЕ ДОРОГОЕ!</button>
+                </div>
+            `;
+        }
+        
+        // Обработка формы оплаты телефона
+        document.getElementById('phonePaymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Показываем "процесс оплаты"
+            const originalText = this.querySelector('button').textContent;
+            this.querySelector('button').textContent = 'ОПЛАЧИВАЕМ...';
+            this.querySelector('button').disabled = true;
+            
+            // Имитация процесса оплаты
+            setTimeout(function() {
+                alert('ОПЛАТА ПРОШЛА УСПЕШНО! ВСЕ ДЕНЬГИ СНЯТЫ!');
+                document.getElementById('phonePaymentForm').reset();
+                document.querySelector('#phonePaymentForm button').textContent = originalText;
+                document.querySelector('#phonePaymentForm button').disabled = false;
+            }, 3000);
+        });
+        
+        // Редирект на страницу поддержки
+        function redirectToSupport() {
+            // Создаем временную страницу поддержки
+            const supportPage = `
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Поддержка Наебанк</title>
+                    <style>
+                        body {
+                            background: #000;
+                            color: #ff0;
+                            font-family: 'Comic Sans MS', cursive;
+                            text-align: center;
+                            padding: 50px;
+                        }
+                        .container {
+                            max-width: 500px;
+                            margin: 0 auto;
+                            background: #111;
+                            padding: 30px;
+                            border: 5px solid #f00;
+                        }
+                        h1 {
+                            color: #f00;
+                            text-shadow: 3px 3px 0 #ff0;
+                        }
+                        input, textarea {
+                            width: 100%;
+                            padding: 10px;
+                            margin: 10px 0;
+                            background: #000;
+                            border: 2px solid #ff0;
+                            color: #ff0;
+                        }
+                        button {
+                            background: #f00;
+                            color: #ff0;
+                            border: none;
+                            padding: 15px 30px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            margin-top: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>СЛУЖБА ПОДДЕРЖКИ НАЕБАНК</h1>
+                        <p>Оставьте заявку, и мы вам никогда не ответим!</p>
+                        <form id="supportForm">
+                            <input type="text" placeholder="Ваше имя" required>
+                            <input type="email" placeholder="Ваш email" required>
+                            <input type="tel" placeholder="Ваш телефон" required>
+                            <textarea placeholder="Ваша никому не всравшаяся проблема" rows="5" required></textarea>
+                            <button type="submit">ОТПРАВИТЬ (БЕСПОЛЕЗНО)</button>
+                        </form>
+                    </div>
+                    <script>
+                        document.getElementById('supportForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            alert('Мы уже про вас забыли! Хахахаха!');
+                            setTimeout(function() {
+                                window.history.back();
+                            }, 3000);
+                        });
+                    <\/script>
+                </body>
+                </html>
+            `;
+            
+            // Открываем страницу поддержки в новом окне
+            const supportWindow = window.open('', '_blank');
+            supportWindow.document.write(supportPage);
+            supportWindow.document.close();
+        }
+        
+        // Редирект на Лицензию на отъем денег
+        function redirectToLicense() {
+            const licensePage = `
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Лицензия на отъем денег - Наебанк</title>
+                    <style>
+                        body {
+                            background: #000;
+                            color: #ff0;
+                            font-family: 'Comic Sans MS', cursive;
+                            padding: 50px;
+                        }
+                        .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            background: #111;
+                            padding: 30px;
+                            border: 5px solid #f00;
+                        }
+                        h1 {
+                            color: #f00;
+                            text-shadow: 3px 3px 0 #ff0;
+                            text-align: center;
+                        }
+                        .content {
+                            margin-top: 30px;
+                        }
+                        button {
+                            background: #f00;
+                            color: #ff0;
+                            border: none;
+                            padding: 15px 30px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            margin-top: 20px;
+                            display: block;
+                            margin: 20px auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>ЛИЦЕНЗИЯ НА ОТЪЕМ ДЕНЕГ</h1>
+                        <div class="content">
+                            <p>Настоящей лицензией Наебанк уполномочивается:</p>
+                            <ul>
+                                <li>Забирать деньги у клиентов без объяснения причин</li>
+                                <li>Списывать средства за "услуги", которые не оказывались</li>
+                                <li>Устанавливать комиссии в размере до 1000% от суммы</li>
+                                <li>Продавать долги коллекторам за 1% от номинала</li>
+                                <li>Игнорировать все жалобы и обращения клиентов</li>
+                            </ul>
+                            <p>Лицензия действует бессрочно и не подлежит отзыву.</p>
+                        </div>
+                        <button onclick="window.close()">ЗАКРЫТЬ (ВСЁ РАВНО НЕ ЧИТАЛИ)</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const licenseWindow = window.open('', '_blank', 'width=900,height=700');
+            licenseWindow.document.write(licensePage);
+            licenseWindow.document.close();
+        }
+        
+        // Редирект на Правила начисления комиссий
+        function redirectToCommissionRules() {
+            const rulesPage = `
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Правила начисления комиссий - Наебанк</title>
+                    <style>
+                        body {
+                            background: #000;
+                            color: #ff0;
+                            font-family: 'Comic Sans MS', cursive;
+                            padding: 50px;
+                        }
+                        .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            background: #111;
+                            padding: 30px;
+                            border: 5px solid #f00;
+                        }
+                        h1 {
+                            color: #f00;
+                            text-shadow: 3px 3px 0 #ff0;
+                            text-align: center;
+                        }
+                        .content {
+                            margin-top: 30px;
+                        }
+                        button {
+                            background: #f00;
+                            color: #ff0;
+                            border: none;
+                            padding: 15px 30px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            margin-top: 20px;
+                            display: block;
+                            margin: 20px auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>ПРАВИЛА НАЧИСЛЕНИЯ КОМИССИЙ</h1>
+                        <div class="content">
+                            <p>1. Комиссия за дыхание: 10 руб./вдох</p>
+                            <p>2. Комиссия за мысли о деньгах: 50 руб./мысль</p>
+                            <p>3. Комиссия за просмотр баланса: 100 руб./просмотр</p>
+                            <p>4. Комиссия за пользование картой: 200 руб./день</p>
+                            <p>5. Комиссия за "ничегонеделание": 500 руб./час</p>
+                            <p>6. Комиссия за комиссии: 100% от суммы всех комиссий</p>
+                            <p>7. Скрытые комиссии: определяются по настроению МЕНЯ</p>
+                        </div>
+                        <button onclick="window.close()">ЗАКРЫТЬ (ВСЁ РАВНО НЕ ЧИТАЛИ)</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const rulesWindow = window.open('', '_blank', 'width=900,height=700');
+            rulesWindow.document.write(rulesPage);
+            rulesWindow.document.close();
+        }
+        
+        // Редирект на Соглашение о конфиденциальности
+        function redirectToPrivacyPolicy() {
+            const policyPage = `
+                <!DOCTYPE html>
+                <html lang="ru">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Соглашение о конфиденциальности - Наебанк</title>
+                    <style>
+                        body {
+                            background: #000;
+                            color: #ff0;
+                            font-family: 'Comic Sans MS', cursive;
+                            padding: 50px;
+                        }
+                        .container {
+                            max-width: 800px;
+                            margin: 0 auto;
+                            background: #111;
+                            padding: 30px;
+                            border: 5px solid #f00;
+                        }
+                        h1 {
+                            color: #f00;
+                            text-shadow: 3px 3px 0 #ff0;
+                            text-align: center;
+                        }
+                        .content {
+                            margin-top: 30px;
+                        }
+                        button {
+                            background: #f00;
+                            color: #ff0;
+                            border: none;
+                            padding: 15px 30px;
+                            font-size: 18px;
+                            cursor: pointer;
+                            margin-top: 20px;
+                            display: block;
+                            margin: 20px auto;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h1>СОГЛАШЕНИЕ О КОНФИДЕНЦИАЛЬНОСТИ</h1>
+                        <div class="content">
+                            <p>Мы гарантируем полную НЕконфиденциальность ваших данных!</p>
+                            <p>Ваши персональные данные будут:</p>
+                            <ul>
+                                <li>Проданы всем желающим</li>
+                                <li>Использованы для спам-рассылок</li>
+                                <li>Переданы в государственные органы по первому требованию</li>
+                                <li>Опубликованы в открытом доступе "по ошибке"</li>
+                                <li>Использованы для шантажа и вымогательства</li>
+                            </ul>
+                            <p>Подписывая это соглашение, вы соглашаетесь со всем вышеперечисленным.</p>
+                        </div>
+                        <button onclick="window.close()">ЗАКРЫТЬ (ВСЁ РАВНО НЕ ЧИТАЛИ)</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const policyWindow = window.open('', '_blank', 'width=900,height=700');
+            policyWindow.document.write(policyPage);
+            policyWindow.document.close();
+        }
+        
+        // Случайные звуки при наведении
+        document.querySelectorAll('button, a').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                const sounds = ['beep', 'boop', 'buzz', 'click'];
+                const randomSound = sounds[Math.floor(Math.random() * sounds.length)];
+                // В реальном сайте здесь был бы звуковой файл
+                console.log(`Play sound: ${randomSound}`);
+            });
+        });
+        
+        // Случайные алерты
+        setInterval(function() {
+            const messages = [
+                "Не забудьте оформить кредит!",
+                "Ваши деньги скучают без нас!",
+                "Акция! Комиссия всего 200%!",
+                "Спешите взять кредит под 1500%!"
+            ];
+            if (Math.random() > 0.7) {
+                // В реальном сайте лучше не использовать alert
+                console.log(messages[Math.floor(Math.random() * messages.length)]);
+            }
+        }, 30000);
+        
+        // Изменение курса валют каждые 5 секунд
+        setInterval(function() {
+            const currencies = document.querySelectorAll('.product-description p');
+            currencies.forEach(p => {
+                if (p.textContent.includes('%')) {
+                    const randomChange = Math.floor(Math.random() * 100) - 50;
+                    p.textContent = p.textContent.replace(/\d+%/, `${Math.abs(randomChange)}%`);
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
